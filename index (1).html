@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aksi Hijau - Bersama Selamatkan Bumi</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            200: '#a7f3d0',
+                            300: '#6ee7b7',
+                            400: '#34d399',
+                            500: '#10b981', // Emerald 500 - Primary
+                            600: '#059669',
+                            700: '#047857',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        },
+                        accent: {
+                            500: '#f59e0b', // Amber 500 - For donations
+                            600: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom utilities */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+        .hero-pattern {
+            background-image: linear-gradient(rgba(4, 120, 87, 0.8), rgba(6, 78, 59, 0.9)), url('https://placehold.co/1920x1080/064e3b/ffffff?text=Nature+Background');
+            background-size: cover;
+            background-position: center;
+        }
+        /* Hide scrollbar for clean modal */
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-brand-500 selection:text-white">
+
+    <nav class="fixed w-full z-50 glass-nav border-b border-gray-100 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-500/30">
+                        AH
+                    </div>
+                    <span class="font-bold text-2xl text-gray-900 tracking-tight">Aksi<span class="text-brand-500">Hijau</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#tentang" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Tentang Kami</a>
+                    <a href="#program" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Program</a>
+                    <a href="#dampak" class="text-gray-600 hover:text-brand-500 font-medium transition-colors">Dampak</a>
+                    <button onclick="openModal('general')" class="bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all transform hover:-translate-y-0.5 shadow-lg shadow-brand-500/30">
+                        Mulai Donasi
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-brand-500 focus:outline-none p-2">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#tentang" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50 rounded-lg">Tentang Kami</a>
+                <a href="#program" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50 rounded-lg">Program</a>
+                <a href="#dampak" class="block px-3 py-3 text-base font-medium text-gray-700 hover:text-brand-500 hover:bg-brand-50 rounded-lg">Dampak</a>
+                <button onclick="openModal('general')" class="w-full mt-4 bg-brand-500 text-white px-3 py-3 rounded-xl font-semibold text-center shadow-md">
+                    Mulai Donasi
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-pattern min-h-[90vh] flex items-center relative pt-20">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/50"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="max-w-3xl">
+                <div class="inline-block px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-sm font-medium mb-6">
+                    🌱 Komunitas Pemuda Tangsel Peduli Lingkungan
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                    Satu Aksi Kecil,<br>
+                    <span class="text-brand-300">Napas Baru</span> Untuk Bumi.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl leading-relaxed">
+                    Bantu kami melestarikan pesisir pantai dengan penanaman mangrove dan mewujudkan lingkungan bebas sampah di Tangerang Selatan melalui edukasi warga.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button onclick="openModal('general')" class="bg-accent-500 hover:bg-accent-600 text-white px-8 py-4 rounded-full font-bold text-lg transition-all transform hover:-translate-y-1 shadow-xl shadow-accent-500/30 flex justify-center items-center gap-2">
+                        Donasi Sekarang
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                    <a href="#program" class="bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-bold text-lg transition-all text-center flex justify-center items-center gap-2">
+                        Lihat Program
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tentang" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <img src="https://placehold.co/600x700/047857/ffffff?text=Pemuda+Aksi+Hijau" alt="Pemuda Aksi Hijau" class="rounded-3xl shadow-2xl object-cover w-full h-[500px]">
+                    <div class="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 hidden sm:block">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center text-brand-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 font-medium">Relawan Aktif</p>
+                                <p class="text-2xl font-bold text-gray-900">250+</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-brand-500 font-bold tracking-wide uppercase text-sm mb-2">Tentang Kami</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">Pemuda Penggerak Perubahan di Tangerang Selatan</h3>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        Berawal dari kepedulian sekelompok pemuda terhadap abrasi di pesisir dan menumpuknya sampah rumah tangga, <strong>Aksi Hijau</strong> lahir sebagai jembatan bagi siapa saja yang ingin berkontribusi nyata.
+                    </p>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                        Kami percaya bahwa aksi kolektif dapat membalikkan keadaan. Setiap donasi Anda akan langsung disalurkan ke proyek lapangan yang transparan dan dapat dipantau oleh publik.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center mt-1">
+                                <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700 font-medium">Transparansi Dana 100%</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center mt-1">
+                                <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700 font-medium">Laporan Perkembangan Berkala</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center mt-1">
+                                <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700 font-medium">Berdampak Langsung pada Ekosistem & Masyarakat</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="program" class="py-24 bg-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand-500 font-bold tracking-wide uppercase text-sm mb-2">Program Unggulan</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Pilih Aksi Kebaikanmu Hari Ini</h3>
+                <p class="text-gray-600 text-lg">Setiap rupiah yang Anda donasikan adalah benih untuk masa depan bumi yang lebih baik. Mari wujudkan bersama.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                
+                <!-- Campaign Card 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col group">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://placehold.co/800x600/065f46/ffffff?text=Penanaman+Mangrove" alt="Penanaman Mangrove" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-600 shadow">Mendesak</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h4 class="text-2xl font-bold text-gray-900 mb-3 hover:text-brand-500 transition-colors cursor-pointer">Benteng Hijau Pesisir: 10.000 Mangrove</h4>
+                        <p class="text-gray-600 mb-6 flex-grow">Menanam mangrove di sepanjang pesisir untuk mencegah abrasi yang semakin mengkhawatirkan dan mengembalikan habitat biota laut laut dangkal.</p>
+                        
+                        <!-- Progress Area -->
+                        <div class="mb-6">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="font-bold text-gray-900">Terkumpul: Rp 35.500.000</span>
+                                <span class="text-gray-500">Target: Rp 50.000.000</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 mb-2 overflow-hidden">
+                                <div class="bg-brand-500 h-3 rounded-full relative" style="width: 71%">
+                                    <div class="absolute inset-0 bg-white/20 w-full h-full" style="background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent); background-size: 1rem 1rem;"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between text-xs font-medium text-gray-500">
+                                <span>71% Tercapai</span>
+                                <span>145 Donatur</span>
+                            </div>
+                        </div>
+
+                        <button onclick="openModal('Mangrove')" class="w-full py-4 rounded-xl bg-brand-50 text-brand-600 font-bold hover:bg-brand-500 hover:text-white transition-colors border border-brand-200 hover:border-transparent text-lg">
+                            Donasi untuk Mangrove
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Campaign Card 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-gray-100 transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col group">
+                    <div class="relative overflow-hidden h-64">
+                        <img src="https://placehold.co/800x600/f59e0b/ffffff?text=Edukasi+Sampah" alt="Edukasi Sampah" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h4 class="text-2xl font-bold text-gray-900 mb-3 hover:text-brand-500 transition-colors cursor-pointer">Desa Nol Sampah: Edukasi & Pengadaan Tong</h4>
+                        <p class="text-gray-600 mb-6 flex-grow">Program edukasi pemilahan sampah organik & anorganik ke 5 RW di Tangsel beserta pengadaan 50 set tong sampah komunal.</p>
+                        
+                        <!-- Progress Area -->
+                        <div class="mb-6">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="font-bold text-gray-900">Terkumpul: Rp 8.000.000</span>
+                                <span class="text-gray-500">Target: Rp 20.000.000</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-3 mb-2 overflow-hidden">
+                                <div class="bg-accent-500 h-3 rounded-full relative" style="width: 40%">
+                                    <div class="absolute inset-0 bg-white/20 w-full h-full" style="background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent); background-size: 1rem 1rem;"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between text-xs font-medium text-gray-500">
+                                <span>40% Tercapai</span>
+                                <span>58 Donatur</span>
+                            </div>
+                        </div>
+
+                        <button onclick="openModal('Edukasi Sampah')" class="w-full py-4 rounded-xl bg-brand-50 text-brand-600 font-bold hover:bg-brand-500 hover:text-white transition-colors border border-brand-200 hover:border-transparent text-lg">
+                            Donasi untuk Edukasi
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="dampak" class="py-20 bg-brand-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-brand-700/50">
+                <div class="p-4">
+                    <div class="text-4xl md:text-5xl font-extrabold text-brand-300 mb-2">4.5K+</div>
+                    <div class="text-brand-100 text-sm md:text-base font-medium">Pohon Tertanam</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl md:text-5xl font-extrabold text-brand-300 mb-2">15</div>
+                    <div class="text-brand-100 text-sm md:text-base font-medium">Desa Teredukasi</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl md:text-5xl font-extrabold text-brand-300 mb-2">250+</div>
+                    <div class="text-brand-100 text-sm md:text-base font-medium">Relawan Tergabung</div>
+                </div>
+                <div class="p-4">
+                    <div class="text-4xl md:text-5xl font-extrabold text-accent-500 mb-2">43M+</div>
+                    <div class="text-brand-100 text-sm md:text-base font-medium">Dana Tersalurkan (Rp)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-300 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-brand-500 rounded-lg flex items-center justify-center text-white font-bold">AH</div>
+                        <span class="font-bold text-2xl text-white tracking-tight">Aksi<span class="text-brand-500">Hijau</span></span>
+                    </div>
+                    <p class="text-gray-400 max-w-sm mb-6 leading-relaxed">
+                        Platform crowdfunding peduli lingkungan yang digerakkan oleh pemuda Tangerang Selatan. Transparan, terpercaya, dan berdampak nyata.
+                    </p>
+                    <div class="flex space-x-4">
+                        <!-- Soci
